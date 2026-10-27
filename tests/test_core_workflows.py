@@ -9,6 +9,20 @@ from tests.test_support import project
 
 
 class CoreWorkflowTests(unittest.TestCase):
+    def test_database_url_normalizes_postgres_provider_schemes(self):
+        self.assertEqual(
+            project.normalize_database_url("postgres://user:pass@db.example.test/app"),
+            "postgresql+psycopg://user:pass@db.example.test/app",
+        )
+        self.assertEqual(
+            project.normalize_database_url("postgresql://user:pass@db.example.test/app"),
+            "postgresql+psycopg://user:pass@db.example.test/app",
+        )
+        self.assertEqual(
+            project.normalize_database_url("sqlite:///jagan_fertilizer.db"),
+            "sqlite:///jagan_fertilizer.db",
+        )
+
     def setUp(self):
         self.client = project.app.test_client()
         self.created_users = []
