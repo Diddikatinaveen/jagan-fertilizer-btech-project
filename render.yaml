@@ -2,18 +2,14 @@ services:
   - type: web
     name: jagan-fertilizer
     runtime: python
-    plan: starter
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python seed_products.py && waitress-serve --listen=0.0.0.0:$PORT app:app
     healthCheckPath: /
-    disk:
-      name: jagan-fertilizer-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: APP_ENV
         value: production
       - key: SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
-        value: sqlite:////var/data/jagan_fertilizer.db
+        sync: false

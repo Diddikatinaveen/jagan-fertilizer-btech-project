@@ -28,8 +28,16 @@ app.config.update(
     PERMANENT_SESSION_LIFETIME=timedelta(hours=8),
     MAX_CONTENT_LENGTH=5 * 1024 * 1024,
 )
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
-    "DATABASE_URL", "sqlite:///jagan_fertilizer.db"
+def normalize_database_url(database_url):
+    if database_url.startswith("postgres://"):
+        return "postgresql+psycopg://" + database_url[len("postgres://"):]
+    if database_url.startswith("postgresql://"):
+        return "postgresql+psycopg://" + database_url[len("postgresql://"):]
+    return database_url
+
+
+app.config["SQLALCHEMY_DATABASE_URI"] = normalize_database_url(
+    os.environ.get("DATABASE_URL", "sqlite:///jagan_fertilizer.db")
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)

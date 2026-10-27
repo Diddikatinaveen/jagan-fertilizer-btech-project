@@ -499,37 +499,45 @@ Use the first-admin command only in a trusted terminal. Keep uploads,
 database files, `.env`, logs, and model artifacts out of web-accessible paths.
 Do not enable Flask debug mode in any deployment.
 
-### Render deployment (single-instance demonstration)
-The root `render.yaml` defines a Python web service using Waitress and a
-persistent disk mounted at `/var/data`. Render requires a paid web-service
-plan for persistent disks; check Render's current pricing before applying the
-Blueprint. The service uses a generated `SECRET_KEY`, production cookie
-settings, and stores its SQLite database on that disk. Do not remove the disk
-or change its mount path without first backing up the database.
+### Free Render deployment (demonstration only)
+The root `render.yaml` defines a Free Python web service using Waitress. Render
+Free web services have an ephemeral filesystem and spin down after inactivity;
+do not use SQLite on the service for customer or shop records. This setup
+connects to a separate PostgreSQL database using the `DATABASE_URL` secret.
+The app normalizes standard `postgres://` and `postgresql://` provider URLs to
+the installed psycopg 3 driver. A free-tier external database can have usage,
+storage, inactivity, backup, and retention limits that may change; review the
+provider's current terms. Neon currently offers a no-cost Free plan, but that
+does not make this application production-ready.
 
 To deploy:
-1. Push the source to a GitHub repository and connect that repository in
-   Render.
-2. In Render, create a new Blueprint from the repository and review the
-   resources and costs before applying it.
-3. Wait for the first deployment to complete. The startup command runs the
-   idempotent catalogue seed script before starting Waitress. The hosted
-   database is created on the persistent disk; the local `instance` database,
-   orders, accounts, and backups are intentionally not uploaded.
-4. Create the first administrator from the Render service's private Shell:
+1. Create a PostgreSQL project with a provider that has a free plan, and copy
+   its pooled/SSL connection URL privately. Do not put that URL in Git or chat.
+2. Push the source to GitHub and connect the repository in Render.
+3. Create a new Blueprint instance and supply the database connection URL for
+   `DATABASE_URL` when Render requests the unsynchronized secret. Do not apply
+   the Blueprint if the service plan is not Free. The app expects the URL to
+   connect to an empty/new database; it does not migrate or copy the local
+   SQLite database, customer accounts, or orders.
+4. Wait for deployment. Startup runs the idempotent catalogue seed script,
+   creates the schema, and starts Waitress. Verify the service logs and the
+   product API; confirm the connected database contains only the new hosted
+   catalogue before creating real records.
+5. Create the first administrator from the Render service's private Shell:
    `python -m flask --app app create-admin`. Enter the password only at the
    interactive prompt, then sign in at `/admin/login`.
-5. Configure optional provider credentials only through Render's private
+6. Configure optional provider credentials only through Render's private
    environment-variable settings. No AI key or trained disease model is
    included in the repository or deployment configuration.
 
-This Blueprint is for a **single-instance demonstration**, not a claim that
-the application is ready for unrestricted public commerce. Its API and login
-rate limits are in-process, SQLite serializes writes, and the catalogue
-contains illustrative prices and unverified stock. Keep real customer
-transactions disabled until pricing, inventory, privacy, backups, monitoring,
-and the remaining production risks have been reviewed. Do not scale this
-service to multiple instances with SQLite.
+This is a **free-tier demonstration**, not a claim that the application is
+ready for unrestricted public commerce. Free Render services can sleep and
+have ephemeral local filesystems. PostgreSQL records persist only according
+to the external provider's current free-plan terms; configure and test private
+backups before entering real data. The app's rate limits are in-process, and
+the catalogue contains illustrative prices and unverified stock. Keep real
+customer transactions disabled until pricing, inventory, privacy, backups,
+monitoring, and the remaining production risks have been reviewed.
 
 For a consistent manual SQLite backup, stop the application first, then copy
 the database to a dated backup path. Keep backups private and outside any
