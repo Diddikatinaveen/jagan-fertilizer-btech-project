@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+instance/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.keras
+*.classes.json
+.env
+.env.*
+!.env.example
+.pytest_cache/
+*.log
+models/*.metadata.json
