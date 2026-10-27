@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Organic manure and compost illustration</title><desc id="desc">A category illustration of soil and leaves, not a product photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#eff6e7"/><stop offset="1" stop-color="#d8e8ce"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><path d="M145 270q175-115 350 0v42H145z" fill="#806747"/>
+  <path d="M320 260c-10-86 12-132 83-160 3 66-10 123-83 160zm-13 12c-63-25-94-70-93-130 65 14 104 48 109 118z" fill="#6d9b60"/>
+  <path d="M313 270l34-122m-30 118-69-98" stroke="#4f744c" stroke-width="8" stroke-linecap="round"/>
+  <text x="320" y="353" text-anchor="middle" fill="#3c553c" font-family="Arial,sans-serif" font-size="23" font-weight="700">ORGANIC · COMPOST</text>
+  <text x="320" y="386" text-anchor="middle" fill="#596b4e" font-family="Arial,sans-serif" font-size="16">CATEGORY ILLUSTRATION · NOT A PRODUCT</text>
+</svg>

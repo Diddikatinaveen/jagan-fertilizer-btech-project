@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Crop protection product category illustration</title><desc id="desc">Neutral crop protection category icon, not a product photograph or pesticide recommendation.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f1f3eb"/><stop offset="1" stop-color="#dce3da"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><path d="M320 100 411 136v66c0 65-42 107-91 130-49-23-91-65-91-130v-66z" fill="#fff" stroke="#718577" stroke-width="6"/>
+  <path d="M320 151v111m-43-56h86" stroke="#6c8c70" stroke-width="16" stroke-linecap="round"/>
+  <text x="320" y="357" text-anchor="middle" fill="#3e5546" font-family="Arial,sans-serif" font-size="22" font-weight="700">CROP PROTECTION</text>
+  <text x="320" y="389" text-anchor="middle" fill="#607064" font-family="Arial,sans-serif" font-size="16">CATEGORY ONLY · NO VERIFIED PRODUCT LISTED</text>
+</svg>

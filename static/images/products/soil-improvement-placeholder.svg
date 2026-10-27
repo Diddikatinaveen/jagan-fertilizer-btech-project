@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Soil improvement product category illustration</title><desc id="desc">Illustrative soil layers and a sprout, not a product package photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#eff5e8"/><stop offset="1" stop-color="#dce8cf"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><path d="M105 240h430v42H105z" fill="#c4a676"/><path d="M105 282h430v43H105z" fill="#927650"/><path d="M105 325h430v35H105z" fill="#6f5b43"/>
+  <path d="M320 244v-97m0 47c-47-28-57-60-43-91 39 15 54 41 43 91zm0-13c41-30 54-61 38-89-36 17-49 43-38 89z" fill="#6d9b60"/>
+  <text x="320" y="389" text-anchor="middle" fill="#f7f4e9" font-family="Arial,sans-serif" font-size="16">SOIL CATEGORY ILLUSTRATION · NOT A PRODUCT</text>
+</svg>

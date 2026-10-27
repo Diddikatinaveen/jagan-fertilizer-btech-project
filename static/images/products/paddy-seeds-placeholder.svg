@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Paddy seeds category illustration</title><desc id="desc">Illustrative rice grains and green shoots, not a seed packet photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#eef6e6"/><stop offset="1" stop-color="#d7e9c9"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><path d="M320 296V125m0 118c-60-45-83-89-67-133 51 24 74 66 67 133zm0-42c57-49 83-91 70-132-54 25-78 67-70 132z" fill="#79a96c"/>
+  <path d="M315 292c-44-31-68-65-70-100m77 65c36-32 58-67 62-104" fill="none" stroke="#477747" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#d8c383"><ellipse cx="243" cy="163" rx="7" ry="15" transform="rotate(-32 243 163)"/><ellipse cx="261" cy="178" rx="7" ry="15" transform="rotate(-32 261 178)"/><ellipse cx="397" cy="160" rx="7" ry="15" transform="rotate(32 397 160)"/><ellipse cx="378" cy="177" rx="7" ry="15" transform="rotate(32 378 177)"/></g>
+  <text x="320" y="353" text-anchor="middle" fill="#344c35" font-family="Arial,sans-serif" font-size="23" font-weight="700">PADDY SEEDS</text>
+  <text x="320" y="386" text-anchor="middle" fill="#596b4e" font-family="Arial,sans-serif" font-size="16">CATEGORY ILLUSTRATION · NOT A SEED PACK</text>
+</svg>

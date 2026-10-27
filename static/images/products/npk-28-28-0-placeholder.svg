@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">NPK 28-28-0 category illustration</title>
+  <desc id="desc">Generic unbranded fertilizer sack illustration, not a product photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#edf5e9"/><stop offset="1" stop-color="#d5e7db"/></linearGradient><linearGradient id="bag" x2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dce9df"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><circle cx="512" cy="80" r="52" fill="#abd0ad" opacity=".58"/>
+  <path d="M238 82h164l22 48-15 205q-2 21-23 21H254q-21 0-23-21l-15-205z" fill="url(#bag)" stroke="#6f9274" stroke-width="4"/>
+  <path d="M238 82h164l14 34H223z" fill="#c7ddca" stroke="#6f9274" stroke-width="4"/>
+  <path d="M258 181h124v78H258z" fill="#e7f1e7"/><text x="320" y="215" text-anchor="middle" fill="#28533a" font-family="Arial,sans-serif" font-size="24" font-weight="700">NPK 28-28-0</text>
+  <text x="320" y="241" text-anchor="middle" fill="#5e7b62" font-family="Arial,sans-serif" font-size="15">CATEGORY ILLUSTRATION</text>
+  <text x="320" y="386" text-anchor="middle" fill="#405841" font-family="Arial,sans-serif" font-size="16">ILLUSTRATION · NOT ACTUAL PACKAGING</text>
+</svg>

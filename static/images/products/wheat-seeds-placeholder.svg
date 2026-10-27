@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Wheat seeds category illustration</title><desc id="desc">Illustrative wheat stalks, not a seed package photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#faf4df"/><stop offset="1" stop-color="#eee0b9"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><path d="M320 300V106m-44 194 24-170m64 170-22-170" stroke="#8c9b57" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#c99d4e"><ellipse cx="320" cy="110" rx="13" ry="25"/><ellipse cx="301" cy="130" rx="12" ry="23" transform="rotate(-40 301 130)"/><ellipse cx="339" cy="130" rx="12" ry="23" transform="rotate(40 339 130)"/><ellipse cx="292" cy="157" rx="11" ry="22" transform="rotate(-42 292 157)"/><ellipse cx="348" cy="157" rx="11" ry="22" transform="rotate(42 348 157)"/></g>
+  <text x="320" y="353" text-anchor="middle" fill="#5c4c2b" font-family="Arial,sans-serif" font-size="23" font-weight="700">WHEAT SEEDS</text>
+  <text x="320" y="386" text-anchor="middle" fill="#756441" font-family="Arial,sans-serif" font-size="16">CATEGORY ILLUSTRATION · NOT A SEED PACK</text>
+</svg>

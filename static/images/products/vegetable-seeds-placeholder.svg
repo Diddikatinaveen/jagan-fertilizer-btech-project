@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Vegetable seeds category illustration</title><desc id="desc">Illustrative mixed seeds and leaves, not a seed packet photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#eff7e9"/><stop offset="1" stop-color="#dcebd3"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><path d="M320 258c-3-81 17-120 77-144 2 61-12 104-77 144zm-8 12c-57-22-81-62-78-113 57 12 86 41 91 103z" fill="#79a96c"/>
+  <path d="M314 274 349 142m-35 128-58-91" stroke="#477747" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#bd9860"><circle cx="248" cy="303" r="9"/><ellipse cx="280" cy="319" rx="7" ry="12"/><circle cx="320" cy="307" r="8"/><ellipse cx="354" cy="321" rx="7" ry="12"/><circle cx="387" cy="302" r="9"/></g>
+  <text x="320" y="363" text-anchor="middle" fill="#344c35" font-family="Arial,sans-serif" font-size="23" font-weight="700">VEGETABLE SEEDS</text>
+  <text x="320" y="394" text-anchor="middle" fill="#596b4e" font-family="Arial,sans-serif" font-size="16">CATEGORY ILLUSTRATION · NOT A SEED PACK</text>
+</svg>

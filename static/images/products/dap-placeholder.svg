@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">DAP fertilizer category illustration</title>
+  <desc id="desc">Generic unbranded fertilizer sack illustration, not a product photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f6f2e7"/><stop offset="1" stop-color="#e7dcbf"/></linearGradient><linearGradient id="bag" x2="1"><stop stop-color="#fffdf5"/><stop offset="1" stop-color="#e6ddc8"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><circle cx="516" cy="78" r="54" fill="#d9c99d" opacity=".55"/>
+  <path d="M238 82h164l22 48-15 205q-2 21-23 21H254q-21 0-23-21l-15-205z" fill="url(#bag)" stroke="#a08b5f" stroke-width="4"/>
+  <path d="M238 82h164l14 34H223z" fill="#e2d5b6" stroke="#a08b5f" stroke-width="4"/>
+  <path d="M262 181h116v78H262z" fill="#f3eddb"/><text x="320" y="215" text-anchor="middle" fill="#554a32" font-family="Arial,sans-serif" font-size="26" font-weight="700">DAP</text>
+  <text x="320" y="241" text-anchor="middle" fill="#766c54" font-family="Arial,sans-serif" font-size="15">CATEGORY ILLUSTRATION</text>
+  <text x="320" y="386" text-anchor="middle" fill="#5c543e" font-family="Arial,sans-serif" font-size="16">ILLUSTRATION · NOT ACTUAL PACKAGING</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Micronutrient fertilizer illustration</title><desc id="desc">An illustrative sample container, not a product or brand photograph.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f5f4e7"/><stop offset="1" stop-color="#e8e4c7"/></linearGradient></defs>
+  <rect width="640" height="420" rx="22" fill="url(#bg)"/><path d="M263 112h114v25h22v170q0 18-19 18H260q-19 0-19-18V137h22z" fill="#fffdf1" stroke="#a28d55" stroke-width="4"/>
+  <path d="M253 198h134v70H253z" fill="#f0ebd3"/><circle cx="320" cy="232" r="22" fill="#91aa67"/>
+  <text x="320" y="300" text-anchor="middle" fill="#51482e" font-family="Arial,sans-serif" font-size="17" font-weight="700">SAMPLE PACK</text>
+  <text x="320" y="386" text-anchor="middle" fill="#655c40" font-family="Arial,sans-serif" font-size="16">ILLUSTRATION · NOT ACTUAL PACKAGING</text>
+</svg>
