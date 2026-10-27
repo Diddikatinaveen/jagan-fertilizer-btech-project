@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>JAGAN FERTILIZER | Account</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="account-page">
+  <header class="account-header">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span class="brand-name">JAGAN <strong>FERTILIZER</strong><small data-i18n="brandTagline">GROW WITH CONFIDENCE</small></span>
+    </a>
+    <label class="language-picker">
+      <span class="visually-hidden" data-i18n="languageLabel">Select language</span>
+      <select id="langToggle" aria-label="Select language" data-i18n-aria="languageLabel">
+        <option value="en">English</option>
+        <option value="te">తెలుగు</option>
+      </select>
+    </label>
+  </header>
+  <main class="account-main">
+    <section class="account-card">
+      <span class="eyebrow" data-i18n="{{ 'adminLoginEyebrow' if mode == 'admin_login' else 'accountEyebrow' }}">
+        {{ "ADMINISTRATOR ACCESS" if mode == "admin_login" else "YOUR ACCOUNT" }}
+      </span>
+      <h1 data-i18n="{{ 'adminLoginTitle' if mode == 'admin_login' else ('registerTitle' if mode == 'register' else 'loginTitle') }}">
+        {{ "Administrator log in" if mode == "admin_login" else ("Create your account" if mode == "register" else "Log in") }}
+      </h1>
+      <p class="account-intro" data-i18n="{{ 'adminLoginIntro' if mode == 'admin_login' else ('registerIntro' if mode == 'register' else 'loginIntro') }}">
+        {{ "Sign in with your administrator account." if mode == "admin_login" else ("Create an account to see your order history." if mode == "register" else "Use your registered email address or mobile number.") }}
+      </p>
+      {% if request.args.get("registered") %}
+        <p class="form-notice" data-i18n="registrationComplete">Account created. You can now log in.</p>
+      {% endif %}
+      {% if error_key %}
+        <p class="form-error" role="alert" data-i18n="{{ error_key }}">{{ error_message }}</p>
+      {% endif %}
+      <form method="post" class="account-form" data-mode="{{ mode }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        {% if mode == "register" %}
+          <label><span data-i18n="fullName">Full name</span>
+            <input name="full_name" maxlength="120" required autocomplete="name" value="{{ request.form.get('full_name', '')[:120] }}">
+          </label>
+        {% endif %}
+        <label><span data-i18n="identityLabel">Email or Indian mobile number</span>
+          <input name="identity" type="text" maxlength="254" required autocomplete="username" value="{{ identity }}" inputmode="email">
+        </label>
+        <label><span data-i18n="passwordLabel">Password</span>
+          <input name="password" type="password" minlength="12" maxlength="128" required autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}">
+        </label>
+        {% if mode == "register" %}
+          <p class="form-hint" data-i18n="passwordHint">Use a password with at least 12 characters.</p>
+        {% endif %}
+        <button class="button button-light account-submit" type="submit" data-i18n="{{ 'register' if mode == 'register' else 'login' }}">
+          {{ "Register" if mode == "register" else "Log in" }}
+        </button>
+      </form>
+      <p class="account-switch">
+        {% if mode == "register" %}
+          <span data-i18n="haveAccount">Already have an account?</span> <a href="{{ url_for('login') }}" data-i18n="login">Log in</a>
+        {% elif mode == "login" %}
+          <span data-i18n="needAccount">New here?</span> <a href="{{ url_for('register') }}" data-i18n="register">Register</a>
+        {% else %}
+          <a href="{{ url_for('index') }}" data-i18n="backToShop">Back to shop</a>
+        {% endif %}
+      </p>
+      {% if mode != "admin_login" %}
+        <a class="admin-login-link" href="{{ url_for('admin_login') }}" data-i18n="administratorLogin">Administrator login</a>
+      {% endif %}
+      <a class="account-home-link" href="{{ url_for('index') }}" data-i18n="backToShop">Back to shop</a>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='translations.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='auth.js') }}" defer></script>
+</body>
+</html>

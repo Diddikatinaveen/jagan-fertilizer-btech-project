@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>JAGAN FERTILIZER | My orders</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="account-page">
+  <header class="account-header">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span class="brand-name">JAGAN <strong>FERTILIZER</strong><small data-i18n="brandTagline">GROW WITH CONFIDENCE</small></span>
+    </a>
+    <div class="account-header-actions">
+      <label class="language-picker">
+        <span class="visually-hidden" data-i18n="languageLabel">Select language</span>
+        <select id="langToggle" aria-label="Select language" data-i18n-aria="languageLabel">
+          <option value="en">English</option>
+          <option value="te">తెలుగు</option>
+        </select>
+      </label>
+      <form method="post" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="header-auth-link" type="submit" data-i18n="logout">Log out</button>
+      </form>
+    </div>
+  </header>
+  <main class="orders-main">
+    <div class="orders-title">
+      <div><span class="eyebrow" data-i18n="accountEyebrow">YOUR ACCOUNT</span><h1 data-i18n="myOrders">My orders</h1></div>
+      <a class="text-link" href="{{ url_for('index') }}" data-i18n="backToShop">Back to shop</a>
+    </div>
+    {% if orders %}
+      <div class="customer-order-list">
+        {% for order in orders %}
+          <article class="customer-order-card">
+            <div class="customer-order-heading">
+              <div><span class="order-label" data-i18n="orderReference">Order reference</span><h2>{{ order.order_reference }}</h2></div>
+              <span class="order-status" data-status="{{ order.status }}">{{ order.status }}</span>
+            </div>
+            <p><strong data-i18n="orderDate">Order date</strong> <time datetime="{{ order.created_at.isoformat() }}">{{ order.created_at.strftime("%Y-%m-%d %H:%M") }}</time></p>
+            <h3 data-i18n="orderItems">Items</h3>
+            <ul class="account-order-items">
+              {% for item in order.items %}
+                <li><span>{{ item.product_name }} × {{ item.quantity }}</span><strong>₹{{ "%.2f"|format(item.subtotal) }}</strong></li>
+              {% endfor %}
+            </ul>
+            <p class="account-order-total"><strong data-i18n="cartTotal">Total</strong><strong>₹{{ "%.2f"|format(order.total) }}</strong></p>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <section class="empty-state account-empty"><span aria-hidden="true">✳</span><h2 data-i18n="noOrders">No previous orders</h2><p data-i18n="noOrdersHint">Orders placed while logged in will appear here.</p><a class="button button-light" href="{{ url_for('index') }}" data-i18n="exploreProducts">Explore products</a></section>
+    {% endif %}
+  </main>
+  <script src="{{ url_for('static', filename='translations.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='auth.js') }}" defer></script>
+</body>
+</html>

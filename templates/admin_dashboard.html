@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>JAGAN FERTILIZER | Admin panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="account-page admin-page">
+  <header class="account-header">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span class="brand-name">JAGAN <strong>FERTILIZER</strong><small data-i18n="brandTagline">GROW WITH CONFIDENCE</small></span>
+    </a>
+    <div class="account-header-actions">
+      <label class="language-picker">
+        <span class="visually-hidden" data-i18n="languageLabel">Select language</span>
+        <select id="langToggle" aria-label="Select language" data-i18n-aria="languageLabel">
+          <option value="en">English</option>
+          <option value="te">తెలుగు</option>
+        </select>
+      </label>
+      <a class="header-auth-link" href="{{ url_for('index') }}" data-i18n="backToShop">Back to shop</a>
+      <form method="post" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="header-auth-link" type="submit" data-i18n="logout">Log out</button>
+      </form>
+    </div>
+  </header>
+  <main class="admin-main">
+    <div class="orders-title">
+      <div><span class="eyebrow" data-i18n="adminLoginEyebrow">ADMINISTRATOR ACCESS</span><h1 data-i18n="adminPanel">Admin panel</h1></div>
+    </div>
+    <p id="adminMessage" class="admin-message" role="status" aria-live="polite"></p>
+    <section class="admin-section">
+      <div class="section-heading"><div><h2 data-i18n="productManagement">Product management</h2><p data-i18n="productManagementHint">Only verified prices and registered crop-protection items can be activated.</p></div></div>
+      <form class="admin-product-form admin-create-form" id="newProductForm">
+        <h3 data-i18n="addProduct">Add product</h3>
+        <div class="admin-form-grid">
+          <label><span data-i18n="productName">Product name</span><input name="name" maxlength="120" required></label>
+          <label><span data-i18n="productCategoryLabel">Category</span><select name="category" required><option value="Fertilizers" data-i18n="fertilizerCategory">Fertilizers</option><option value="Seeds" data-i18n="seedsCategory">Seeds</option><option value="Pesticides" data-i18n="cropProtectionCategory">Crop protection</option></select></label>
+          <label><span data-i18n="brandVerifiedLabel">Brand (if verified)</span><input name="brand" maxlength="120"></label>
+          <label class="check-field"><input name="brand_verified" type="checkbox"><span data-i18n="brandVerified">Brand verified</span></label>
+          <label class="wide-field"><span data-i18n="productDescription">Description</span><textarea name="description" maxlength="5000"></textarea></label>
+          <label class="wide-field"><span data-i18n="productDescriptionTelugu">Description (Telugu)</span><textarea name="description_te" maxlength="5000"></textarea></label>
+          <label><span data-i18n="priceLabel">Price (₹)</span><input name="price" type="number" min="0" max="1000000000" step="0.01" value="0" required></label>
+          <label><span data-i18n="unitLabel">Unit</span><input name="unit" maxlength="40" value="pack"></label>
+          <label><span data-i18n="stockLabel">Stock</span><input name="stock" type="number" min="0" max="1000000" step="1" value="0" required></label>
+          <label class="check-field"><input name="stock_verified" type="checkbox"><span data-i18n="stockVerified">Stock verified</span></label>
+          <label class="wide-field"><span data-i18n="imageLabel">Image path</span><input name="image" maxlength="250"></label>
+          <label class="wide-field"><span data-i18n="guidanceEnglish">Guidance (English)</span><textarea name="guidance_en" maxlength="8000"></textarea></label>
+          <label class="wide-field"><span data-i18n="guidanceTelugu">Guidance (Telugu)</span><textarea name="guidance_te" maxlength="8000"></textarea></label>
+          <label class="check-field"><input name="active" type="checkbox"><span data-i18n="activeProduct">Active / visible in catalogue</span></label>
+          <label class="check-field"><input name="price_verified" type="checkbox"><span data-i18n="priceVerified">Price verified</span></label>
+          <label class="check-field"><input name="registration_verified" type="checkbox"><span data-i18n="registrationVerified">Registration verified</span></label>
+        </div>
+        <button class="button button-light" type="submit" data-i18n="saveProduct">Save product</button>
+      </form>
+      <div class="admin-product-list">
+        {% for product in products %}
+          <form class="admin-product-form" data-product-id="{{ product.id }}">
+            <div class="admin-product-heading"><h3>{{ product.name }}</h3><span class="order-status">{{ "Active" if product.active else "Inactive" }}</span></div>
+            <div class="admin-form-grid">
+              <label><span data-i18n="productName">Product name</span><input name="name" maxlength="120" required value="{{ product.name }}"></label>
+              <label><span data-i18n="productCategoryLabel">Category</span><select name="category"><option value="Fertilizers" data-i18n="fertilizerCategory" {% if product.category == 'Fertilizers' %}selected{% endif %}>Fertilizers</option><option value="Seeds" data-i18n="seedsCategory" {% if product.category == 'Seeds' %}selected{% endif %}>Seeds</option><option value="Pesticides" data-i18n="cropProtectionCategory" {% if product.category == 'Pesticides' %}selected{% endif %}>Crop protection</option></select></label>
+              <label><span data-i18n="brandVerifiedLabel">Brand (if verified)</span><input name="brand" maxlength="120" value="{{ product.brand }}"></label>
+              <label class="check-field"><input name="brand_verified" type="checkbox" {% if product.brand_verified %}checked{% endif %}><span data-i18n="brandVerified">Brand verified</span></label>
+              <label class="wide-field"><span data-i18n="productDescription">Description</span><textarea name="description" maxlength="5000">{{ product.description }}</textarea></label>
+              <label class="wide-field"><span data-i18n="productDescriptionTelugu">Description (Telugu)</span><textarea name="description_te" maxlength="5000">{{ product.description_te }}</textarea></label>
+              <label><span data-i18n="priceLabel">Price (₹)</span><input name="price" type="number" min="0" max="1000000000" step="0.01" value="{{ product.price }}" required></label>
+              <label><span data-i18n="unitLabel">Unit</span><input name="unit" maxlength="40" value="{{ product.unit }}"></label>
+              <label><span data-i18n="stockLabel">Stock</span><input name="stock" type="number" min="0" max="1000000" step="1" value="{{ product.stock }}" required></label>
+              <label class="check-field"><input name="stock_verified" type="checkbox" {% if product.stock_verified %}checked{% endif %}><span data-i18n="stockVerified">Stock verified</span></label>
+              <label class="wide-field"><span data-i18n="imageLabel">Image path</span><input name="image" maxlength="250" value="{{ product.image }}"></label>
+              <label class="wide-field"><span data-i18n="guidanceEnglish">Guidance (English)</span><textarea name="guidance_en" maxlength="8000">{{ product.guidance_en }}</textarea></label>
+              <label class="wide-field"><span data-i18n="guidanceTelugu">Guidance (Telugu)</span><textarea name="guidance_te" maxlength="8000">{{ product.guidance_te }}</textarea></label>
+              <label class="check-field"><input name="active" type="checkbox" {% if product.active %}checked{% endif %}><span data-i18n="activeProduct">Active / visible in catalogue</span></label>
+              <label class="check-field"><input name="price_verified" type="checkbox" {% if product.price_verified %}checked{% endif %}><span data-i18n="priceVerified">Price verified</span></label>
+              <label class="check-field"><input name="registration_verified" type="checkbox" {% if product.registration_verified %}checked{% endif %}><span data-i18n="registrationVerified">Registration verified</span></label>
+            </div>
+            <button class="button button-light" type="submit" data-i18n="saveChanges">Save changes</button>
+          </form>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="admin-section">
+      <div class="section-heading"><div><h2 data-i18n="orderManagement">Customer orders</h2><p data-i18n="orderManagementHint">Customer contact and delivery details are restricted to this administrator view.</p></div></div>
+      {% if orders %}
+        <div class="admin-order-list">
+          {% for order in orders %}
+            <article class="admin-order-card" data-order-id="{{ order.id }}">
+              <div class="admin-order-heading"><div><h3>{{ order.order_reference }}</h3><p>{{ order.created_at.strftime("%Y-%m-%d %H:%M") }}</p></div>
+                <label><span class="visually-hidden" data-i18n="orderStatus">Order status</span><select name="status" aria-label="Order status" data-i18n-aria="orderStatus">{% for status in ("Received", "Confirmed", "Processing", "Shipped", "Completed", "Cancelled") %}<option value="{{ status }}" data-status="{{ status }}" {% if order.status == status %}selected{% endif %}>{{ status }}</option>{% endfor %}</select></label>
+              </div>
+              <p><strong data-i18n="customerName">Customer name</strong>: {{ order.customer_name }} · <strong data-i18n="customerPhone">Phone number</strong>: {{ order.phone }}</p>
+              <p><strong data-i18n="customerAddress">Delivery address</strong>: {{ order.address }}</p>
+              {% if order.notes %}<p><strong data-i18n="orderNotes">Notes</strong>: {{ order.notes }}</p>{% endif %}
+              <ul class="account-order-items">{% for item in order.items %}<li><span>{{ item.product_name }} × {{ item.quantity }}</span><strong>₹{{ "%.2f"|format(item.subtotal) }}</strong></li>{% endfor %}</ul>
+              <p class="account-order-total"><strong data-i18n="cartTotal">Total</strong><strong>₹{{ "%.2f"|format(order.total) }}</strong></p>
+              <button class="details-button status-save" type="button" data-i18n="updateStatus">Update status</button>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="admin-empty" data-i18n="noOrders">No previous orders</p>
+      {% endif %}
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='translations.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='auth.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='admin.js') }}" defer></script>
+</body>
+</html>
